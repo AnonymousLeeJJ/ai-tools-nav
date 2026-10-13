@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools 导航 - 精选国内外好用的 AI 工具</title>
+<meta name="description" content="精选国内外好用的 AI 工具，按场景分类，标注免费情况，持续更新">
+<style>
+  :root {
+    --bg: #f7f7fb; --card: #ffffff; --text: #1f2328; --muted: #656d76;
+    --accent: #7c3aed; --accent-soft: #f1ebfd; --border: #e6e4ee; --radius: 14px;
+    --green: #0e9f6e; --green-soft: #e7f6f0; --amber: #b7791f; --amber-soft: #fdf3e3;
+    --red: #d64545; --red-soft: #fdecec;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+         background: var(--bg); color: var(--text); line-height: 1.6; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  header.hero { text-align: center; padding: 64px 20px 36px; }
+  header.hero h1 { font-size: 2.4rem; letter-spacing: -0.5px; }
+  header.hero p.sub { color: var(--muted); margin-top: 12px; font-size: 1.05rem; }
+  .stats { margin-top: 18px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 999px;
+          padding: 6px 18px; font-size: 0.9rem; color: var(--muted); }
+  .stat b { color: var(--accent); }
+  .toolbar { position: sticky; top: 0; z-index: 10; background: rgba(247,247,251,0.92);
+             backdrop-filter: blur(8px); padding: 14px 0 10px; border-bottom: 1px solid var(--border); }
+  .search { width: 100%; padding: 12px 18px; border: 1px solid var(--border); border-radius: 999px;
+            font-size: 1rem; background: var(--card); outline: none; transition: border-color .15s; }
+  .search:focus { border-color: var(--accent); }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .chip { padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border);
+          background: var(--card); cursor: pointer; font-size: 0.88rem; color: var(--muted);
+          transition: all .15s; user-select: none; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  main { padding: 28px 0 60px; }
+  .cat-title { display: flex; align-items: baseline; gap: 10px; margin: 30px 0 14px; }
+  .cat-title h2 { font-size: 1.25rem; }
+  .cat-title span { color: var(--muted); font-size: 0.85rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+          padding: 18px 20px; transition: transform .15s, box-shadow .15s; display: flex; flex-direction: column; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(31,35,40,0.08); }
+  .card .head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .card h3 { font-size: 1.02rem; }
+  .badges { display: flex; gap: 6px; flex-shrink: 0; }
+  .badge { font-size: 0.72rem; border-radius: 6px; padding: 2px 8px; font-weight: 600; }
+  .badge.free { background: var(--green-soft); color: var(--green); }
+  .badge.freemium { background: var(--amber-soft); color: var(--amber); }
+  .badge.paid { background: var(--red-soft); color: var(--red); }
+  .badge.cn { background: var(--accent-soft); color: var(--accent); }
+  .card p.desc { color: var(--muted); font-size: 0.88rem; margin: 8px 0 0; flex: 1; }
+  .card .foot { margin-top: 12px; }
+  .btn { display: inline-block; padding: 7px 14px; border-radius: 8px; border: 1px solid var(--border);
+         font-size: 0.82rem; background: var(--card); color: var(--accent); text-decoration: none;
+         transition: all .15s; }
+  .btn:hover { border-color: var(--accent); }
+  footer { text-align: center; padding: 36px 20px 48px; color: var(--muted); font-size: 0.88rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  .empty { text-align: center; color: var(--muted); padding: 60px 0; }
+  .legend { display: flex; gap: 14px; justify-content: center; margin-top: 14px; flex-wrap: wrap;
+            font-size: 0.78rem; color: var(--muted); }
+  @media (max-width: 600px) { header.hero h1 { font-size: 1.8rem; } }
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>🧭 AI Tools 导航</h1>
+  <p class="sub">精选国内外好用的 AI 工具 · 按场景分类 · 标注免费情况 · 持续更新</p>
+  <div class="stats">
+    <div class="stat"><b id="statTools">0</b> 款工具</div>
+    <div class="stat"><b id="statCn">0</b> 款国产</div>
+    <div class="stat">CC0 协议 · 随意使用</div>
+  </div>
+  <div class="legend">
+    <span>🟢 免费</span><span>🟡 免费+付费</span><span>🔴 付费</span><span>🟣 国产（国内可直接访问）</span>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <input class="search" id="search" type="search" placeholder="🔍 搜索工具，如：PPT、视频、编程…">
+    <div class="chips" id="chips"></div>
+  </div>
+</div>
+
+<main class="wrap" id="main"></main>
+
+<footer>
+  <p>用 ❤️ 维护 · <a href="https://github.com/AnonymousLeeJJ/ai-tools-nav" target="_blank" rel="noopener">GitHub 仓库</a> · 欢迎 Star ⭐ 与投稿</p>
+</footer>
+
+<script id="tools-data" type="application/json">{"meta": {"name": "AI Tools 导航", "description": "精选国内外好用的 AI 工具，按场景分类，标注免费情况", "updated": "2026-10-13"}, "categories": [{"id": "chat", "name": "对话助手", "icon": "💬"}, {"id": "search", "name": "AI 搜索", "icon": "🔍"}, {"id": "coding", "name": "编程开发", "icon": "💻"}, {"id": "image", "name": "AI 绘画", "icon": "🎨"}, {"id": "video", "name": "视频生成", "icon": "🎬"}, {"id": "audio", "name": "音频音乐", "icon": "🎵"}, {"id": "office", "name": "办公效率", "icon": "📑"}, {"id": "agent", "name": "智能体平台", "icon": "🤖"}], "tools": [{"name": "ChatGPT", "url": "https://chatgpt.com", "category": "chat", "price": "freemium", "cn": false, "description": "OpenAI 出品，全球用户最多的 AI 助手，免费版可用"}, {"name": "Claude", "url": "https://claude.ai", "category": "chat", "price": "freemium", "cn": false, "description": "Anthropic 出品，长文本写作与代码能力出众"}, {"name": "Gemini", "url": "https://gemini.google.com", "category": "chat", "price": "freemium", "cn": false, "description": "Google 多模态助手，与搜索、Workspace 深度集成"}, {"name": "DeepSeek", "url": "https://chat.deepseek.com", "category": "chat", "price": "free", "cn": true, "description": "国产开源之光，深度推理能力强大，网页版免费"}, {"name": "Kimi", "url": "https://www.kimi.com", "category": "chat", "price": "free", "cn": true, "description": "月之暗面出品，长文档解读与联网搜索见长"}, {"name": "豆包", "url": "https://www.doubao.com", "category": "chat", "price": "free", "cn": true, "description": "字节跳动出品，功能全面的国民级 AI 助手"}, {"name": "腾讯元宝", "url": "https://yuanbao.tencent.com", "category": "chat", "price": "free", "cn": true, "description": "腾讯出品，接入微信公众号生态，混元+DeepSeek 双模型"}, {"name": "通义千问", "url": "https://www.tongyi.com", "category": "chat", "price": "free", "cn": true, "description": "阿里出品，开源模型家族庞大，办公场景丰富"}, {"name": "智谱清言", "url": "https://chatglm.cn", "category": "chat", "price": "free", "cn": true, "description": "清华系 GLM 模型，视频通话和智能体功能有特色"}, {"name": "文小言", "url": "https://yiyan.baidu.com", "category": "chat", "price": "free", "cn": true, "description": "百度文心大模型，与百度搜索深度结合"}, {"name": "Perplexity", "url": "https://www.perplexity.ai", "category": "search", "price": "freemium", "cn": false, "description": "AI 搜索引擎标杆，答案附引用来源，研究类问题首选"}, {"name": "秘塔 AI 搜索", "url": "https://metaso.cn", "category": "search", "price": "free", "cn": true, "description": "国产 AI 搜索，无广告、结构化结果、支持学术模式"}, {"name": "夸克 AI", "url": "https://www.quark.cn", "category": "search", "price": "free", "cn": true, "description": "阿里旗下智能搜索，AI 总结与网盘生态结合"}, {"name": "纳米 AI 搜索", "url": "https://www.n.cn", "category": "search", "price": "free", "cn": true, "description": "360 出品，多模型协作的 AI 搜索"}, {"name": "Cursor", "url": "https://cursor.com", "category": "coding", "price": "freemium", "cn": false, "description": "最流行的 AI 代码编辑器，Agent 模式可自动完成多文件改动"}, {"name": "GitHub Copilot", "url": "https://github.com/features/copilot", "category": "coding", "price": "freemium", "cn": false, "description": "GitHub 官方编程助手，与 IDE 集成最成熟，有免费额度"}, {"name": "Claude Code", "url": "https://claude.com/product/claude-code", "category": "coding", "price": "paid", "cn": false, "description": "终端里的 AI 编程 Agent，处理大型代码库能力强"}, {"name": "Trae", "url": "https://www.trae.ai", "category": "coding", "price": "free", "cn": true, "description": "字节跳动出品的 AI IDE，国内版免费，上手门槛低"}, {"name": "CodeBuddy 腾讯云代码助手", "url": "https://copilot.tencent.com", "category": "coding", "price": "free", "cn": true, "description": "腾讯出品 AI 编程助手，支持主流 IDE，国内访问稳定"}, {"name": "Windsurf", "url": "https://windsurf.com", "category": "coding", "price": "freemium", "cn": false, "description": "以 Flow 体验著称的 AI 编辑器，上下文理解出色"}, {"name": "v0", "url": "https://v0.dev", "category": "coding", "price": "freemium", "cn": false, "description": "Vercel 出品，用自然语言生成 React 界面原型"}, {"name": "Bolt.new", "url": "https://bolt.new", "category": "coding", "price": "freemium", "cn": false, "description": "浏览器里一句话生成全栈应用并直接部署"}, {"name": "Lovable", "url": "https://lovable.dev", "category": "coding", "price": "freemium", "cn": false, "description": "面向非程序员的应用生成器，聊天式迭代产品"}, {"name": "Midjourney", "url": "https://www.midjourney.com", "category": "image", "price": "paid", "cn": false, "description": "艺术感最强的 AI 绘画工具，设计师标配"}, {"name": "即梦 AI", "url": "https://jimeng.jianying.com", "category": "image", "price": "freemium", "cn": true, "description": "字节跳动出品，中文理解好，每日送积分，海报字效出色"}, {"name": "通义万相", "url": "https://tongyi.aliyun.com/wanxiang", "category": "image", "price": "freemium", "cn": true, "description": "阿里 AI 绘画，中文提示词友好，风格丰富"}, {"name": "Recraft", "url": "https://www.recraft.ai", "category": "image", "price": "freemium", "cn": false, "description": "生成矢量图与品牌素材，设计圈口碑好"}, {"name": "Ideogram", "url": "https://ideogram.ai", "category": "image", "price": "freemium", "cn": false, "description": "以图中文字渲染准确著称，做海报 logo 好用"}, {"name": "Stable Diffusion", "url": "https://stability.ai", "category": "image", "price": "free", "cn": false, "description": "开源绘画模型鼻祖，可本地部署，生态插件极多"}, {"name": "可灵 AI", "url": "https://klingai.kuaishou.com", "category": "video", "price": "freemium", "cn": true, "description": "快手出品视频生成，物理规律模拟出色，国际口碑好"}, {"name": "即梦 AI 视频", "url": "https://jimeng.jianying.com", "category": "video", "price": "freemium", "cn": true, "description": "字节的视频生成能力，运镜控制友好，适合短视频创作"}, {"name": "Runway", "url": "https://runwayml.com", "category": "video", "price": "freemium", "cn": false, "description": "影视级 AI 视频工具集，绿幕、动捕、生成一体"}, {"name": "Pika", "url": "https://pika.art", "category": "video", "price": "freemium", "cn": false, "description": "特效玩法丰富的视频生成工具"}, {"name": "Luma Dream Machine", "url": "https://lumalabs.ai", "category": "video", "price": "freemium", "cn": false, "description": "图生视频效果自然，首尾帧控制精准"}, {"name": "海螺视频", "url": "https://hailuoai.com/video", "category": "video", "price": "freemium", "cn": true, "description": "MiniMax 出品，人物表演细腻，中文提示词友好"}, {"name": "Vidu", "url": "https://www.vidu.com", "category": "video", "price": "freemium", "cn": true, "description": "生数科技出品，动漫风格表现出色，生成速度快"}, {"name": "Suno", "url": "https://suno.com", "category": "audio", "price": "freemium", "cn": false, "description": "一句话生成完整歌曲（含人声），质量惊艳"}, {"name": "海绵音乐", "url": "https://www.haimian.com", "category": "audio", "price": "free", "cn": true, "description": "字节出品的中文 AI 音乐生成，中文歌词处理自然"}, {"name": "ElevenLabs", "url": "https://elevenlabs.io", "category": "audio", "price": "freemium", "cn": false, "description": "最强 AI 配音与声音克隆，多语言情感表达真实"}, {"name": "剪映", "url": "https://www.capcut.cn", "category": "audio", "price": "freemium", "cn": true, "description": "AI 剪辑、字幕、数字人一站式的国民剪辑工具"}, {"name": "Gamma", "url": "https://gamma.app", "category": "office", "price": "freemium", "cn": false, "description": "一句话生成精美 PPT/网页，演示文稿神器"}, {"name": "Napkin AI", "url": "https://www.napkin.ai", "category": "office", "price": "freemium", "cn": false, "description": "把文字自动变成信息图、流程图，做汇报配图极快"}, {"name": "NotebookLM", "url": "https://notebooklm.google.com", "category": "office", "price": "free", "cn": false, "description": "Google 出品的资料研读助手，可把文档变成播客对谈"}, {"name": "Notion AI", "url": "https://www.notion.com/product/ai", "category": "office", "price": "paid", "cn": false, "description": "嵌入 Notion 工作区的 AI 写作与知识库问答"}, {"name": "DeepL", "url": "https://www.deepl.com", "category": "office", "price": "freemium", "cn": false, "description": "公认翻译质量最高的机器翻译，文档翻译保格式"}, {"name": "沉浸式翻译", "url": "https://immersivetranslate.com", "category": "office", "price": "freemium", "cn": true, "description": "双语对照网页翻译插件，看外文资料神器"}, {"name": "通义听悟", "url": "https://tingwu.aliyun.com", "category": "office", "price": "freemium", "cn": true, "description": "会议录音转写与摘要，支持实时翻译，打工人刚需"}, {"name": "Coze 扣子", "url": "https://www.coze.cn", "category": "agent", "price": "free", "cn": true, "description": "字节出品的零代码 AI Bot 搭建平台，可发布到豆包/飞书"}, {"name": "Dify", "url": "https://dify.ai", "category": "agent", "price": "free", "cn": true, "description": "开源 LLM 应用开发平台，可视化编排工作流，可自部署"}, {"name": "腾讯元器", "url": "https://yuanqi.tencent.com", "category": "agent", "price": "free", "cn": true, "description": "腾讯智能体平台，可一键发布到微信生态"}, {"name": "FastGPT", "url": "https://fastgpt.cn", "category": "agent", "price": "free", "cn": true, "description": "开源知识库问答系统，RAG 效果好，私有化部署方便"}, {"name": "n8n", "url": "https://n8n.io", "category": "agent", "price": "free", "cn": false, "description": "开源自动化工作流平台，AI 节点丰富，自部署免费"}]}</script>
+<script>
+const DATA = JSON.parse(document.getElementById('tools-data').textContent);
+const { categories, tools } = DATA;
+const state = { q: '', cat: 'all' };
+const PRICE = { free: '免费', freemium: '免费+付费', paid: '付费' };
+
+document.getElementById('statTools').textContent = tools.length;
+document.getElementById('statCn').textContent = tools.filter(t => t.cn).length;
+
+const chipsEl = document.getElementById('chips');
+const mainEl = document.getElementById('main');
+
+function renderChips() {
+  const all = [{ id: 'all', name: '全部', icon: '✨' }, ...categories,
+               { id: 'free', name: '纯免费', icon: '🆓' }, { id: 'cn', name: '国产', icon: '🇨🇳' }];
+  chipsEl.innerHTML = all.map(c =>
+    `<span class="chip ${state.cat === c.id ? 'active' : ''}" data-id="${c.id}">${c.icon || ''} ${c.name}</span>`
+  ).join('');
+  chipsEl.querySelectorAll('.chip').forEach(el =>
+    el.addEventListener('click', () => { state.cat = el.dataset.id; renderChips(); renderList(); }));
+}
+
+function matches(t) {
+  if (state.cat === 'free' && t.price !== 'free') return false;
+  if (state.cat === 'cn' && !t.cn) return false;
+  if (!['all', 'free', 'cn'].includes(state.cat) && t.category !== state.cat) return false;
+  if (!state.q) return true;
+  const q = state.q.toLowerCase();
+  return (t.name + t.description).toLowerCase().includes(q);
+}
+
+function renderList() {
+  const groups = categories
+    .map(c => ({ cat: c, items: tools.filter(t => t.category === c.id && matches(t)) }))
+    .filter(g => g.items.length);
+  if (!groups.length) {
+    mainEl.innerHTML = '<div class="empty">没有找到匹配的工具，换个关键词试试 🧐</div>';
+    return;
+  }
+  mainEl.innerHTML = groups.map(g => `
+    <div class="cat-title"><h2>${g.cat.icon} ${g.cat.name}</h2><span>${g.items.length} 款</span></div>
+    <div class="grid">${g.items.map(t => `
+      <div class="card">
+        <div class="head"><h3>${t.name}</h3>
+          <div class="badges">
+            ${t.cn ? '<span class="badge cn">国产</span>' : ''}
+            <span class="badge ${t.price}">${PRICE[t.price]}</span>
+          </div></div>
+        <p class="desc">${t.description}</p>
+        <div class="foot"><a class="btn" href="${t.url}" target="_blank" rel="noopener">🔗 访问官网</a></div>
+      </div>`).join('')}
+    </div>`).join('');
+}
+
+document.getElementById('search').addEventListener('input', e => { state.q = e.target.value.trim(); renderList(); });
+renderChips();
+renderList();
+</script>
+</body>
+</html>
