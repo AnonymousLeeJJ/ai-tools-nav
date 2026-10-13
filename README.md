@@ -52,6 +52,12 @@ AI 工具爆炸式增长，但大多数导航站广告泛滥、信息过时、�
 
 [![Star History Chart](https://api.star-history.com/svg?repos=AnonymousLeeJJ/ai-tools-nav&type=Date)](https://star-history.com/#AnonymousLeeJJ/ai-tools-nav&Date)
 
+## 🔗 我的其他项目
+
+- 🎯 [Awesome AI Prompts](https://github.com/AnonymousLeeJJ/awesome-ai-prompts) — 48 条实战验证的中文 AI 提示词，即复制即用
+- 🔌 [Free APIs 中文精选](https://github.com/AnonymousLeeJJ/free-apis-zh) — 真正可用的免费 API 大全，标注是否需 Key
+- 📄 [Awesome Resume 简历模板](https://github.com/AnonymousLeeJJ/awesome-resume-zh) — 免费中文简历模板，浏览器直接导出 PDF
+
 ## 📄 许可
 
 [CC0 1.0 Universal](LICENSE) —— 公有领域，随意使用，无需署名。
