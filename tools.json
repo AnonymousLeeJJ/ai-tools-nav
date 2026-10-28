@@ -2,7 +2,7 @@
   "meta": {
     "name": "AI Tools 导航",
     "description": "精选国内外好用的 AI 工具，按场景分类，标注免费情况",
-    "updated": "2026-10-13"
+    "updated": "2026-10-28"
   },
   "categories": [
     { "id": "chat", "name": "对话助手", "icon": "💬" },
@@ -66,6 +66,10 @@
     { "name": "Dify", "url": "https://dify.ai", "category": "agent", "price": "free", "cn": true, "description": "开源 LLM 应用开发平台，可视化编排工作流，可自部署" },
     { "name": "腾讯元器", "url": "https://yuanqi.tencent.com", "category": "agent", "price": "free", "cn": true, "description": "腾讯智能体平台，可一键发布到微信生态" },
     { "name": "FastGPT", "url": "https://fastgpt.cn", "category": "agent", "price": "free", "cn": true, "description": "开源知识库问答系统，RAG 效果好，私有化部署方便" },
-    { "name": "n8n", "url": "https://n8n.io", "category": "agent", "price": "free", "cn": false, "description": "开源自动化工作流平台，AI 节点丰富，自部署免费" }
+    { "name": "n8n", "url": "https://n8n.io", "category": "agent", "price": "free", "cn": false, "description": "开源自动化工作流平台，AI 节点丰富，自部署免费" },
+    { "name": "小蓝助手 Blue", "url": "https://www.bluedoai.com/tools/", "category": "agent", "price": "freemium", "cn": true, "description": "Windows 端 AI 助手，本体免费，支持自定义 API 与本地模型接入" },
+    { "name": "System One API", "url": "https://system-one.dev/en/api", "category": "coding", "price": "freemium", "cn": false, "description": "多模型 AI API 网关与 TypeScript SDK，便于 Agent 统一接入" },
+    { "name": "Artgen", "url": "https://artgen.net/zh-CN/tools/image-to-pixel-art", "category": "image", "price": "freemium", "cn": false, "description": "浏览器端图片转像素画，支持 ASCII 等风格，适合游戏素材与创意设计" },
+    { "name": "AI Manga Translator", "url": "https://www.mangatranslate.com/ko/ai-manga-translator/", "category": "office", "price": "freemium", "cn": false, "description": "漫画图片批量识别与翻译，支持自定义译文和在线排版编辑" }
   ]
 }
